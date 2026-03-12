@@ -299,10 +299,14 @@
             const msg = `Halo Targani & Kariyah, Saya ${nama} ingin konfirmasi bahwa saya ${status}. \nUcapan: ${pesan}`;
             window.open(`https://wa.me/+62 838-5392-9171?text=${encodeURIComponent(msg)}`, '_blank');
         }
-
         const urlParams = new URLSearchParams(window.location.search);
-        const to = urlParams.get('to');
-        if (to) document.getElementById('guestName').innerText = to;
-    </script>
+const to = urlParams.get('to');
+
+if (to) {
+    // .replace agar tanda plus (+) atau %20 berubah jadi spasi bersih
+    document.getElementById('guestName').innerText = decodeURIComponent(to).replace(/\+/g, ' ');
+}
+
+        </script>
 </body>
 </html>
