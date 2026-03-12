@@ -85,6 +85,8 @@ background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://im
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 <!DOCTYPE html>
 <html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,81 +102,92 @@ background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://im
             --gold: #d4af37;
             --cream: #fdfbf8;
             --white: #ffffff;
+            --dark: #222;
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
-        
-        html, body { 
-            overflow-x: hidden; 
-            width: 100%;
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--cream); 
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: #333; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .font-aesthetic { font-family: 'Sacramento', cursive; color: var(--gold); }
 
-        /* --- FIX BACKGROUND --- */
+        /* --- BACKGROUND ANIMATION --- */
         .hero-bg {
-            position: fixed; 
-            inset: 0; 
-            z-index: -1;
-            /* Pastikan file ini ada di GitHub dengan nama background.jpg */
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('background.jpg') no-repeat center center;
-            background-size: cover;
+            position: fixed; inset: 0; z-index: -1;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80') center/cover;
             animation: zoomEffect 20s infinite alternate;
         }
-        
-        @keyframes zoomEffect { 
-            from { transform: scale(1); } 
-            to { transform: scale(1.1); } 
-        }
+        @keyframes zoomEffect { from { transform: scale(1); } to { transform: scale(1.15); } }
 
+        /* --- COVER --- */
         #cover {
             height: 100vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white; position: relative;
+            text-align: center; color: white; z-index: 1000; position: relative;
         }
 
         .btn-open {
             margin-top: 30px; padding: 15px 40px; border: 2px solid var(--gold);
-            background: rgba(212, 175, 55, 0.2); color: white; border-radius: 50px;
+            background: rgba(212, 175, 55, 0.1); color: white; border-radius: 50px;
             cursor: pointer; backdrop-filter: blur(10px); transition: 0.4s;
             font-weight: 600; letter-spacing: 2px;
         }
+        .btn-open:hover { background: var(--gold); color: var(--maroon); transform: scale(1.05); }
 
+        /* --- MAIN --- */
         #main-content { display: none; }
-        section { padding: 80px 20px; text-align: center; max-width: 900px; margin: auto; }
+        section { padding: 100px 20px; text-align: center; max-width: 900px; margin: auto; }
 
+        /* --- MEMPELAI --- */
         .photo-mempelai {
-            width: 200px; height: 300px; margin: 0 auto 30px;
-            border: 8px solid white; border-radius: 100px 100px 0 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
-            background: url('bgdepan.jpg') center/cover no-repeat;
-        }
-
-        .photo-profile {
-            width: 130px; height: 130px; border-radius: 50%;
-            margin: 0 auto 20px; border: 4px solid var(--gold);
-            object-fit: cover; display: block;
+            width: 250px; height: 350px; margin: 0 auto 30px;
+            border: 8px solid white; border-radius: 125px 125px 0 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-size: cover; background-position: center;
         }
 
         .card-bride {
-            background: white; padding: 30px 20px; border-radius: 20px;
+            background: white; padding: 40px 20px; border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-bottom: 5px solid var(--maroon);
-            margin-bottom: 30px;
+            margin-bottom: 30px; transition: 0.3s;
+        }
+        .card-bride:hover { transform: translateY(-10px); }
+
+        /* --- TIMELINE --- */
+        .timeline-box {
+            text-align: left; border-left: 2px solid var(--gold);
+            margin: 20px auto; padding-left: 30px; position: relative; max-width: 500px;
+        }
+        .timeline-item { margin-bottom: 30px; position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -39px; top: 5px;
+            width: 16px; height: 16px; background: var(--maroon); border-radius: 50%; border: 3px solid var(--gold);
         }
 
-        .font-aesthetic { font-family: 'Sacramento', cursive; color: var(--gold); }
+        /* --- GIFT & RSVP --- */
+        .gift-card {
+            background: var(--maroon); color: white; padding: 30px;
+            border-radius: 20px; margin: 20px 0; border: 1px dashed var(--gold);
+        }
+        .btn-copy {
+            background: var(--gold); color: var(--maroon); border: none;
+            padding: 5px 15px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; font-weight: bold;
+        }
 
+        /* --- FLOATING CONTROLS --- */
         #music-control {
-            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
-            width: 45px; height: 45px; background: var(--maroon);
+            position: fixed; bottom: 25px; right: 25px; z-index: 1000;
+            width: 50px; height: 50px; background: var(--maroon);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; cursor: pointer;
+            color: white; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .spin { animation: rotate 5s infinite linear; }
         @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- FOOTER & WATERMARK --- */
+        footer { background: var(--maroon); color: white; padding: 80px 20px; }
+        .brand-footer { background: #1a1a1a; color: #666; padding: 25px; font-size: 0.75rem; text-align: center; letter-spacing: 2px; }
+        .brand-footer span { color: var(--gold); font-weight: bold; }
     </style>
 </head>
 <body>
-
     <div class="hero-bg"></div>
 
     <audio id="weddingMusic" loop>
