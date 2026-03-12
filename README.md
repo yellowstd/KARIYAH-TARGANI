@@ -1,2 +1,0 @@
-# KARIYAH-TARGANI
-Undangan Digital 
